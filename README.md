@@ -52,7 +52,7 @@ BackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154
 **Example 1**:\
 Get current wallpaper path for monitor 0:\
 `WallP 0`\
-Note: The UID for monitor 0 and the current wallpaper path will be written to the console and the registry key `HKCU\Software\WallP`
+**Note**: The UID for monitor 0 and the current wallpaper path will be written to the console and the registry key `HKCU\Software\WallP`
 
 **Example 2:**\
 Set monitor 0 to use img3.jpg:\
