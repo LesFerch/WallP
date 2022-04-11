@@ -85,16 +85,10 @@ namespace WinAPI
                     catch { monitorID = ""; }
                     try { MonitorUID = monitorID.Substring(monitorID.IndexOf("UID"), 11); }
                     catch { MonitorUID = "All"; }
-                    if (WPpath != "")
-                    {
-                        handler.SetWallpaper(monitorID, WPpath);
-                        if (position != 99) { handler.SetPosition(position); }
-                    }
+                    if (WPpath != "") { handler.SetWallpaper(monitorID, WPpath); }
                     WPpath = handler.GetWallpaper(monitorID);
-                    if (BackgroundColor != "")
-                    {
-                        handler.SetBackgroundColor(IntColor(BackgroundColor));
-                    }
+                    if (position != 99) { handler.SetPosition(position); }
+                    if (BackgroundColor != "") { handler.SetBackgroundColor(IntColor(BackgroundColor)); }
                 }
                 using (RegistryKey WallPKey = Software.CreateSubKey("WallP"))
                 {
