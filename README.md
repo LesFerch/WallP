@@ -50,26 +50,25 @@ BackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154
 ## Usage examples
 
 **Example 1**:\
-Get current wallpaper path for monitor 0:
-`WallP 0`
+Get current wallpaper path for monitor 0:\
+`WallP 0`\
 Note: The UID for monitor 0 and the current wallpaper path will be written to the console and the registry key `HKCU\Software\WallP`
 
 **Example 2:**\
-Set monitor 0 to use img3.jpg:
+Set monitor 0 to use img3.jpg:\
 `WallP 0 "C:\Windows\Web\Wallpaper\Theme1\img3.jpg"`
 
 **Example 3:**\
-Set monitor 1 to use img2.jpg:
+Set monitor 1 to use img2.jpg:\
 `WallP 1 "C:\Windows\Web\Wallpaper\Theme1\img2.jpg"`
 
 **Example 4:**\
-Set all monitors to use wallpaper position "Fill".
+Set all monitors to use wallpaper position "Fill".\
 `WallP Fill`
 
 **Example 5:**\
-Set background color for all monitors to "Cool Blue"
+Set background color for all monitors to "Cool Blue"\
 `WallP 45,125,154`
-
 \
 \
 [![image](https://user-images.githubusercontent.com/79026235/153264696-8ec747dd-37ec-4fc1-89a1-3d6ea3259a95.png)](https://github.com/LesFerch/WallP)
