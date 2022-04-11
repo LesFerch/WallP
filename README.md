@@ -11,8 +11,9 @@ Compatible with Windows 7, 8, 10, and 11 and multiple monitors.
 1. Download the zip file using the link above.
 2. Extract **WallP.exe**.
 3. Open a Cmd prompt and run **WallP.exe** with no parameters to see the built-in help.
-4. If you get a UAC prompt, *uncheck* **Always ask before opening this file** and then click **Run**.
 5. Use **WallP.exe** from the Cmd prompt, or from your own script, to set wallpaper and/or background color.
+
+**Note**: Some antivirus software may falsely detect the download as a virus. This can happen anytime you download a new executable and may require extra steps to whitelist the file. In testing, no issues were encountered using Windows Defender on Windows 10 and 11, but a false positive "virus detected" occurred on Windows Server 2022.
 
 # Summary
 
