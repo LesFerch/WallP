@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallP", "WallP.csproj", "{B52CC7FE-C2D2-4767-BB52-1CBB2813B5A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B52CC7FE-C2D2-4767-BB52-1CBB2813B5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52CC7FE-C2D2-4767-BB52-1CBB2813B5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52CC7FE-C2D2-4767-BB52-1CBB2813B5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52CC7FE-C2D2-4767-BB52-1CBB2813B5A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBA41F2A-8581-41BC-A10B-6C17C76EA605}
+	EndGlobalSection
+EndGlobal

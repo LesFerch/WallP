@@ -1,12 +1,11 @@
 ﻿using System;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using System.Drawing;
 
-namespace WallP
+namespace WinAPI
 {
-    class Program
+    class WallP
     {
         static void Main(string[] args)
         {
@@ -20,40 +19,19 @@ namespace WallP
 
             if (args.Length == 0)
             {
-
-                if (GetConsoleWindow() != IntPtr.Zero)
-                {
-                    Console.WriteLine("Set wallpaper for one or more monitors");
-                    Console.WriteLine("Full functionality requires Windows 8 or higher");
-                    Console.WriteLine("Windows 7 limited to setting wallpaper for all monitors");
-                    Console.WriteLine("Usage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor]");
-                    Console.WriteLine("Parameters can be specified in any order");
-                    Console.WriteLine("MonitorIndex is a zero-based integer");
-                    Console.WriteLine("ImageFilePath can be an absolute or relative path");
-                    Console.WriteLine("If MonitorIndex is omitted, wallpaper will be set for all monitors");
-                    Console.WriteLine("If ImageFilePath is omitted, MonitorIndex wallpaper path will be returned");
-                    Console.WriteLine("Position can be one of: Center Tile Stretch Fit Fill Span");
-                    Console.WriteLine("If Position is omitted, position is unchanged for Center Stretch Fit Fill");
-                    Console.WriteLine("If Position is omitted, Span and Tile revert to Fill");
-                    Console.WriteLine("BackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154");
-                }
-                else
-                {
-                    CustomMessageBox.Show("\nSet wallpaper for one or more monitors" +
-                      "\n\nFull functionality requires Windows 8 or higher" +
-                      "\n\nWindows 7 limited to setting wallpaper for all monitors" +
-                      "\n\nUsage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor]" +
-                      "\n\nParameters can be specified in any order" +
-                      "\n\nMonitorIndex is a zero-based integer" +
-                      "\n\nImageFilePath can be an absolute or relative path" +
-                      "\n\nIf MonitorIndex is omitted, wallpaper will be set for all monitors" +
-                      "\n\nIf ImageFilePath is omitted, MonitorIndex wallpaper path will be returned" +
-                      "\n\nPosition can be one of: Center Tile Stretch Fit Fill Span" +
-                      "\n\nIf Position is omitted, position is unchanged for Center Stretch Fit Fill" +
-                      "\n\nIf Position is omitted, Span and Tile revert to Fill" +
-                      "\n\nBackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154");
-                }
-
+                Console.WriteLine("Set wallpaper for one or more monitors");
+                Console.WriteLine("Full functionality requires Windows 8 or higher");
+                Console.WriteLine("Windows 7 limited to setting wallpaper for all monitors");
+                Console.WriteLine("Usage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor]");
+                Console.WriteLine("Parameters can be specified in any order");
+                Console.WriteLine("MonitorIndex is a zero-based integer");
+                Console.WriteLine("ImageFilePath can be an absolute or relative path");
+                Console.WriteLine("If MonitorIndex is omitted, wallpaper will be set for all monitors");
+                Console.WriteLine("If ImageFilePath is omitted, MonitorIndex wallpaper path will be returned");
+                Console.WriteLine("Position can be one of: Center Tile Stretch Fit Fill Span");
+                Console.WriteLine("If Position is omitted, position is unchanged for Center Stretch Fit Fill");
+                Console.WriteLine("If Position is omitted, Span and Tile revert to Fill");
+                Console.WriteLine("BackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154");
             }
             else
             {
@@ -128,9 +106,6 @@ namespace WallP
             }
 
         }
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetConsoleWindow();
-
         [DllImport("user32.dll")]
         public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
         private static uint IntColor(string rgb)
@@ -184,56 +159,4 @@ namespace WallP
         {
         }
     }
-
-    public class CustomMessageBox : Form
-    {
-        private Panel scrollPanel;
-        private Label messageLabel;
-
-        public CustomMessageBox(string message)
-        {
-            InitializeComponents();
-
-            // Set the message text
-            messageLabel.Text = message;
-
-            // Set the form properties
-            this.Text = "WallP";
-            this.Size = new Size(650, 465);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.ShowIcon = false;
-            this.Font = new Font("Consolas", 10);
-        }
-
-        private void InitializeComponents()
-        {
-            scrollPanel = new Panel();
-            scrollPanel.Dock = DockStyle.Fill; // The panel fills the entire form
-            scrollPanel.AutoScroll = true;
-
-            messageLabel = new Label();
-            messageLabel.AutoSize = true;
-            messageLabel.MaximumSize = new Size(this.Width - 40, 0); // Set max width for text wrapping
-            messageLabel.Location = new Point(0, 0);
-
-            scrollPanel.Controls.Add(messageLabel);
-            this.Controls.Add(scrollPanel);
-
-            // Adjust the layout when the form is resized
-            this.Resize += (sender, e) =>
-            {
-                messageLabel.MaximumSize = new Size(this.Width - 40, 0); // Adjust max width for wrapping
-            };
-        }
-
-        public static void Show(string message)
-        {
-            using (CustomMessageBox customMessageBox = new CustomMessageBox(message))
-            {
-                customMessageBox.ShowDialog();
-            }
-        }
-    }
-
-
 }

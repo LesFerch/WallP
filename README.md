@@ -1,6 +1,6 @@
 # WallP
 
-[![image](https://user-images.githubusercontent.com/79026235/152910441-59ba653c-5607-4f59-90c0-bc2851bf2688.png)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.0.1/WallP.zip)
+[![image](https://user-images.githubusercontent.com/79026235/152910441-59ba653c-5607-4f59-90c0-bc2851bf2688.png)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.1.0/WallP.zip)
 
 ## Windows command line wallpaper changer for multiple monitors
 
@@ -9,8 +9,8 @@ Compatible with Windows 7, 8, 10, and 11 and multiple monitors.
 # How to Download and Run
 
 1. Download the zip file using the link above.
-2. Extract **WallP.exe**.
-3. Open a Cmd prompt and run **WallP.exe** with no parameters to see the built-in help.
+2. Extract **WallP.exe**. The zip file includes both a console version and windows version.
+3. Open a Cmd prompt and run **WallP.exe** with no parameters to see the built-in help (or double-click the Windows version).
 5. Use **WallP.exe** from the Cmd prompt, or from your own script, to set wallpaper and/or background color.
 
 **Note**: Some antivirus software may falsely detect the download as a virus. This can happen anytime you download a new executable and may require extra steps to whitelist the file. In testing, no issues were encountered using Windows Defender on Windows 10 and 11, but a false positive "virus detected" occurred on Windows Server 2022.
