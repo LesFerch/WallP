@@ -10,6 +10,7 @@ namespace WallP
     {
         static void Main(string[] args)
         {
+            string myName = typeof(Program).Namespace;
             string WPpath = "";
             uint MonitorIndex = 999999999;
             string monitorID;
@@ -17,11 +18,12 @@ namespace WallP
             string BackgroundColor = "";
             string MonitorUID = "All";
             uint MonitorCount = 1;
+            bool ConMode = GetConsoleWindow() != IntPtr.Zero;
 
             if (args.Length == 0)
             {
 
-                if (GetConsoleWindow() != IntPtr.Zero)
+                if (ConMode)
                 {
                     Console.WriteLine("Set wallpaper for one or more monitors");
                     Console.WriteLine("Full functionality requires Windows 8 or higher");
@@ -74,7 +76,15 @@ namespace WallP
                 string NTVer = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion", "CurrentVersion", "6.0");
                 if (Version.Parse(NTVer) < new Version("6.1"))
                 {
-                    Console.WriteLine("Windows 7 or greater is required");
+                    string Msg = "Windows 7 or greater is required";
+                    if (ConMode)
+                    {
+                        Console.WriteLine(Msg);
+                    }
+                    else
+                    {
+                        MessageBox.Show(Msg, myName, MessageBoxButtons.OK);
+                    }
                     return;
                 }
                 bool Win7 = NTVer == "6.1";
@@ -123,8 +133,15 @@ namespace WallP
                     }
                     Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers", "BackgroundType", 0, RegistryValueKind.DWord);
                 }
-                Console.WriteLine(MonitorUID);
-                Console.WriteLine(WPpath);
+                if (ConMode)
+                {
+                    Console.WriteLine(MonitorUID);
+                    Console.WriteLine(WPpath);
+                }
+                else
+                {
+                    MessageBox.Show($"{MonitorUID}\n\n{WPpath}", myName, MessageBoxButtons.OK);
+                }
             }
 
         }
