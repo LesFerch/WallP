@@ -6,7 +6,7 @@
 
 Compatible with Windows 7, 8, 10, and 11 and multiple monitors.
 
-# How to Download and Run
+## How to Download and Run
 
 1. Download the zip file using the link above.
 2. Extract **WallP.exe**. The zip file includes both a console version and windows version.
@@ -15,7 +15,7 @@ Compatible with Windows 7, 8, 10, and 11 and multiple monitors.
 
 **Note**: Some antivirus software may falsely detect the download as a virus. This can happen anytime you download a new executable and may require extra steps to whitelist the file. In testing, no issues were encountered using Windows Defender on Windows 10 and 11, but a false positive "virus detected" occurred on Windows Server 2022.
 
-# Summary
+## Summary
 
 **WallP** is a command line wallpaper tool for Windows. It can:
 - Retrieve the current wallpaper for any given monitor (result is written to console and registry).
@@ -23,11 +23,11 @@ Compatible with Windows 7, 8, 10, and 11 and multiple monitors.
 - Set wallpaper position (Center Tile Stretch Fit Fill Span)
 - Set the background color for all monitors.
 
-# How to Use
+## How to Use
 
 This is a command line tool for technical users. It is typically used from within a script (batch file, VBScript, PowerShell, etc.).
 
-## Built in help
+### Built in help
 
 Running **WallP** with no parameters will display the built-in help:
 ```
@@ -47,7 +47,7 @@ BackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154
 ```
 
 
-## Usage examples
+### Usage examples
 
 **Example 1**:\
 Get current wallpaper path for monitor 0:\
