@@ -12,6 +12,7 @@ namespace WallP
         {
             string myName = typeof(Program).Namespace;
             string WPpath = "";
+            string ImagePath = "";
             uint MonitorIndex = 999999999;
             string monitorID;
             int position = 99;
@@ -67,7 +68,7 @@ namespace WallP
                     if (args[i].ToLower() == "fit") { position = 3; }
                     if (args[i].ToLower() == "fill") { position = 4; }
                     if (args[i].ToLower() == "span") { position = 5; }
-                    if (System.IO.File.Exists(args[i])) { WPpath = args[i]; }
+                    if (System.IO.File.Exists(args[i])) { ImagePath = args[i]; WPpath = ImagePath; }
                     try { MonitorIndex = Convert.ToUInt32(args[i]); }
                     catch { }
                     if (args[i].Contains(",")) { BackgroundColor = args[i]; }
@@ -133,14 +134,17 @@ namespace WallP
                     }
                     Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers", "BackgroundType", 0, RegistryValueKind.DWord);
                 }
-                if (ConMode)
+                if (ImagePath == "")
                 {
-                    Console.WriteLine(MonitorUID);
-                    Console.WriteLine(WPpath);
-                }
-                else
-                {
-                    MessageBox.Show($"{MonitorUID}\n\n{WPpath}", myName, MessageBoxButtons.OK);
+                    if (ConMode)
+                    {
+                        Console.WriteLine(MonitorUID);
+                        Console.WriteLine(WPpath);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{MonitorUID}\n\n{WPpath}", myName, MessageBoxButtons.OK);
+                    }
                 }
             }
 

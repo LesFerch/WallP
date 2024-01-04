@@ -1,6 +1,6 @@
 # WallP
 
-[![image](https://user-images.githubusercontent.com/79026235/152910441-59ba653c-5607-4f59-90c0-bc2851bf2688.png)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.1.0/WallP.zip)
+[![image](https://user-images.githubusercontent.com/79026235/152910441-59ba653c-5607-4f59-90c0-bc2851bf2688.png)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.2.0/WallP.zip)
 
 ## Windows command line wallpaper changer for multiple monitors
 
