@@ -1,6 +1,6 @@
 # WallP
 
-[![image](https://user-images.githubusercontent.com/79026235/152910441-59ba653c-5607-4f59-90c0-bc2851bf2688.png)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.2.0/WallP.zip)
+[![image](https://github.com/LesFerch/WinSetView/assets/79026235/0188480f-ca53-45d5-b9ff-daafff32869e)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.2.0/WallP.zip)
 
 ## Windows command line wallpaper changer for multiple monitors
 
@@ -13,7 +13,7 @@ Compatible with Windows 7, 8, 10, and 11 and multiple monitors.
 3. Open a Cmd prompt and run **WallP.exe** with no parameters to see the built-in help (or double-click the Windows version).
 5. Use **WallP.exe** from the Cmd prompt, or from your own script, to set wallpaper and/or background color.
 
-**Note**: Some antivirus software may falsely detect the download as a virus. This can happen anytime you download a new executable and may require extra steps to whitelist the file. In testing, no issues were encountered using Windows Defender on Windows 10 and 11, but a false positive "virus detected" occurred on Windows Server 2022.
+**Note**: Some antivirus software may falsely detect the download as a virus. This can happen any time you download a new executable and may require extra steps to whitelist the file. In testing, no issues were encountered using Windows Defender on Windows 10 and 11, but a false positive "virus detected" occurred on Windows Server 2022.
 
 ## Summary
 
@@ -71,4 +71,4 @@ Set background color for all monitors to "Cool Blue"\
 `WallP 45,125,154`
 \
 \
-[![image](https://user-images.githubusercontent.com/79026235/153264696-8ec747dd-37ec-4fc1-89a1-3d6ea3259a95.png)](https://github.com/LesFerch/WallP)
+[![image](https://github.com/LesFerch/WinSetView/assets/79026235/63b7acbc-36ef-4578-b96a-d0b7ea0cba3a)](https://github.com/LesFerch/WallP)
