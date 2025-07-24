@@ -37,7 +37,7 @@ Windows 7 limited to setting wallpaper for all monitors
 Usage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor]
 Parameters can be specified in any order
 MonitorIndex is a zero-based integer
-ImageFilePath can be an absolute or relative path
+ImageFilePath can be an absolute or relative path, or None to unset wallpaper
 If MonitorIndex is omitted, wallpaper will be set for all monitors
 If ImageFilePath is omitted, MonitorIndex wallpaper path will be returned
 Position can be one of: Center Tile Stretch Fit Fill Span
