@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -32,7 +32,7 @@ namespace WallP
                     Console.WriteLine("Usage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor]");
                     Console.WriteLine("Parameters can be specified in any order");
                     Console.WriteLine("MonitorIndex is a zero-based integer");
-                    Console.WriteLine("ImageFilePath can be an absolute or relative path");
+                    Console.WriteLine("ImageFilePath can be an absolute or relative path, or None to unset wallpaper");
                     Console.WriteLine("If MonitorIndex is omitted, wallpaper will be set for all monitors");
                     Console.WriteLine("If ImageFilePath is omitted, MonitorIndex wallpaper path will be returned");
                     Console.WriteLine("Position can be one of: Center Tile Stretch Fit Fill Span");
@@ -49,7 +49,7 @@ namespace WallP
                       "\n\nParameters can be specified in any order" +
                       "\n\nMonitorIndex is a zero-based integer" +
                       "\n\nImageFilePath can be an absolute or relative path" +
-                      "\n\nIf MonitorIndex is omitted, wallpaper will be set for all monitors" +
+                      "\n\nIf MonitorIndex is omitted, wallpaper will be set for all monitors, or None to unset wallpaper" +
                       "\n\nIf ImageFilePath is omitted, MonitorIndex wallpaper path will be returned" +
                       "\n\nPosition can be one of: Center Tile Stretch Fit Fill Span" +
                       "\n\nIf Position is omitted, position is unchanged for Center Stretch Fit Fill" +
@@ -68,7 +68,8 @@ namespace WallP
                     if (args[i].ToLower() == "fit") { position = 3; }
                     if (args[i].ToLower() == "fill") { position = 4; }
                     if (args[i].ToLower() == "span") { position = 5; }
-                    if (System.IO.File.Exists(args[i])) { ImagePath = args[i]; WPpath = ImagePath; }
+                    if (args[i].ToLower() == "none") { ImagePath = ""; WPpath = "none"; }
+                    else { if (System.IO.File.Exists(args[i])) { ImagePath = args[i]; WPpath = ImagePath; } }
                     try { MonitorIndex = Convert.ToUInt32(args[i]); }
                     catch { }
                     if (args[i].Contains(",")) { BackgroundColor = args[i]; }
@@ -91,9 +92,9 @@ namespace WallP
                 bool Win7 = NTVer == "6.1";
                 RegistryKey Software = Registry.CurrentUser.CreateSubKey("Software");
 
-                if (WPpath != "")
+                if (ImagePath != "")
                 {
-                    WPpath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, WPpath));
+                    ImagePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ImagePath));
                 }
 
                 if (Win7)
@@ -101,11 +102,11 @@ namespace WallP
                     if (WPpath != "")
                     {
                         string DesktopKey = @"HKEY_CURRENT_USER\Control Panel\Desktop";
-                        Registry.SetValue(DesktopKey, "Wallpaper", WPpath, RegistryValueKind.String);
+                        Registry.SetValue(DesktopKey, "Wallpaper", ImagePath, RegistryValueKind.String);
                         Registry.SetValue(DesktopKey, "WallpaperStyle", "10", RegistryValueKind.String);
                         Registry.SetValue(DesktopKey, "TileWallpaper", "0", RegistryValueKind.String);
 
-                        SystemParametersInfo(0x0014, 0, WPpath, 0x2);
+                        SystemParametersInfo(0x0014, 0, ImagePath, 0x2);
                     }
                     WPpath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\Control Panel\Desktop", "Wallpaper", "");
                 }
@@ -118,7 +119,7 @@ namespace WallP
                     catch { monitorID = ""; }
                     try { MonitorUID = monitorID.Substring(monitorID.IndexOf("UID"), 11); }
                     catch { MonitorUID = "All"; }
-                    if (WPpath != "") { handler.SetWallpaper(monitorID, WPpath); }
+                    if (WPpath != "") { handler.SetWallpaper(monitorID, ImagePath); }
                     WPpath = handler.GetWallpaper(monitorID);
                     if (position != 99) { handler.SetPosition(position); }
                     if (BackgroundColor != "") { handler.SetBackgroundColor(IntColor(BackgroundColor)); }
@@ -181,7 +182,7 @@ namespace WallP
         [ComImport, Guid("B92B56A9-8B55-4E14-9A89-0199BBB6F93B"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface IDesktopWallpaper
         {
-            void SetWallpaper([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.LPWStr)] string WPpath);
+            void SetWallpaper([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.LPWStr)] string ImagePath);
             [return: MarshalAs(UnmanagedType.LPWStr)]
             string GetWallpaper([MarshalAs(UnmanagedType.LPWStr)] string monitorID);
             [return: MarshalAs(UnmanagedType.LPWStr)]
