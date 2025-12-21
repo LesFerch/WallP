@@ -34,16 +34,18 @@ Running **WallP** with no parameters will display the built-in help:
 Set wallpaper for one or more monitors
 Full functionality requires Windows 8 or higher
 Windows 7 limited to setting wallpaper for all monitors
-Usage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor]
+Usage: WallP.exe [MonitorIndex] [ImageFilePath] [SlideshowFolder] [Position] [BackgroundColor] [/c]
 Parameters can be specified in any order
 MonitorIndex is a zero-based integer
 ImageFilePath can be an absolute or relative path, or None to unset wallpaper
+SlideshowFolder must be a complete path
 If MonitorIndex is omitted, wallpaper will be set for all monitors
 If ImageFilePath is omitted, MonitorIndex wallpaper path will be returned
 Position can be one of: Center Tile Stretch Fit Fill Span
 If Position is omitted, position is unchanged for Center Stretch Fit Fill
 If Position is omitted, Span and Tile revert to Fill
 BackgroundColor is specified as r,g,b. Example (Cool blue): 45,125,154
+Include /c to calculate the current wallpaper's average color
 ```
 
 
@@ -69,8 +71,17 @@ Set all monitors to use wallpaper position "Fill".\
 **Example 5:**\
 Set background color for all monitors to "Cool Blue"\
 `WallP 45,125,154`
+
+**Example 6:**\
+Enable Slideshow and set to specified folder:\
+`WallP "C:\Windows\Web\Wallpaper\Theme1"`
+
+**Example 7**:\
+Get average color of wallpaper for monitor 0:\
+`WallP 0 /c`\
 \
 \
 [![image](https://github.com/LesFerch/WinSetView/assets/79026235/63b7acbc-36ef-4578-b96a-d0b7ea0cba3a)](https://github.com/LesFerch/WallP)
+
 
 
