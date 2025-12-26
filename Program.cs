@@ -13,6 +13,7 @@ namespace WallP
         {
             string myName = typeof(Program).Namespace;
             string WPpath = "";
+            string WPprev = "";
             string ImagePath = "";
             uint MonitorIndex = 999999999;
             string monitorID;
@@ -78,6 +79,7 @@ namespace WallP
                     if (args[i].ToLower() == "fill") { position = 4; }
                     if (args[i].ToLower() == "span") { position = 5; }
                     if (args[i].ToLower() == "none") { ImagePath = ""; WPpath = "none"; }
+                    if (args[i].ToLower() == "undo") { ImagePath = ""; WPpath = "undo"; }
                     if (System.IO.File.Exists(args[i])) { ImagePath = args[i]; WPpath = ImagePath; }
                     if (System.IO.Directory.Exists(args[i])) { SlideshowFolder = args[i]; }
                     try { MonitorIndex = Convert.ToUInt32(args[i]); } catch { }
@@ -109,16 +111,34 @@ namespace WallP
 
                 if (Win7)
                 {
+                    string DesktopKey = @"HKEY_CURRENT_USER\Control Panel\Desktop";
+                    WPprev = (string)Registry.GetValue(DesktopKey, "Wallpaper", "");
+
+                    if (WPpath == "undo")
+                    {
+                        try
+                        {
+                            using (RegistryKey WallPKey = Software.CreateSubKey("WallP"))
+                            {
+                                using (RegistryKey All = WallPKey.CreateSubKey("All"))
+                                {
+                                    WPpath = (string)All.GetValue("WPprev", "");
+                                }
+                            }
+                        }
+                        catch { WPpath = WPprev; }
+                        ImagePath = WPpath;
+                    }
+
                     if (WPpath != "")
                     {
-                        string DesktopKey = @"HKEY_CURRENT_USER\Control Panel\Desktop";
                         Registry.SetValue(DesktopKey, "Wallpaper", ImagePath, RegistryValueKind.String);
                         Registry.SetValue(DesktopKey, "WallpaperStyle", "10", RegistryValueKind.String);
                         Registry.SetValue(DesktopKey, "TileWallpaper", "0", RegistryValueKind.String);
 
                         SystemParametersInfo(0x0014, 0, ImagePath, 0x2);
                     }
-                    WPpath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\Control Panel\Desktop", "Wallpaper", "");
+                    WPpath = (string)Registry.GetValue(DesktopKey, "Wallpaper", "");
                 }
                 else
                 {
@@ -130,11 +150,30 @@ namespace WallP
                     try { MonitorUID = monitorID.Substring(monitorID.IndexOf("UID"), 11); }
                     catch { MonitorUID = "All"; }
 
+                    WPprev = handler.GetWallpaper(monitorID);
+
+                    if (WPpath == "undo")
+                    {
+                        try
+                        {
+                            using (RegistryKey WallPKey = Software.CreateSubKey("WallP"))
+                            {
+                                using (RegistryKey MonitorUIDKey = WallPKey.CreateSubKey(MonitorUID))
+                                {
+                                    WPpath = (string)MonitorUIDKey.GetValue("WPprev", "");
+                                }
+                            }
+                        }
+                        catch { WPpath = WPprev;}
+                        ImagePath = WPpath;
+                    }
+
                     if (WPpath != "") handler.SetWallpaper(monitorID, ImagePath);
 
                     if (SlideshowFolder != "") SetWallpaperSlideshow(SlideshowFolder);
 
                     WPpath = handler.GetWallpaper(monitorID);
+
                     if (position != 99) { handler.SetPosition(position); }
                     if (BackgroundColor != "") { handler.SetBackgroundColor(IntColor(BackgroundColor)); }
                 }
@@ -145,6 +184,7 @@ namespace WallP
                     WallPKey.SetValue("WPpath", WPpath);
                     using (RegistryKey MonitorUIDKey = WallPKey.CreateSubKey(MonitorUID))
                     {
+                        if (WPprev != WPpath) MonitorUIDKey.SetValue("WPprev", WPprev);
                         MonitorUIDKey.SetValue("WPpath", WPpath);
                         if (getAvgColor)
                         {
