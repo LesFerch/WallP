@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B52CC7FE-C2D2-4767-BB52-1CBB2813B5A2}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>WallP</RootNamespace>
     <AssemblyName>WallP</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>

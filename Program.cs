@@ -35,11 +35,13 @@ namespace WallP
                     Console.WriteLine("Set wallpaper for one or more monitors");
                     Console.WriteLine("Full functionality requires Windows 8 or higher");
                     Console.WriteLine("Windows 7 limited to setting wallpaper for all monitors");
-                    Console.WriteLine("Usage: WallP.exe [MonitorIndex] [ImageFilePath] [SlideshowFolder] [Position] [BackgroundColor] [/c]");
+                    Console.WriteLine("Usage: WallP.exe [MonitorIndex] [ImageFilePath|SlideshowFolder|None|Undo] [Position] [BackgroundColor] [/c]");
                     Console.WriteLine("Parameters can be specified in any order");
                     Console.WriteLine("MonitorIndex is a zero-based integer");
-                    Console.WriteLine("ImageFilePath can be an absolute or relative path, or None to unset wallpaper");
-                    Console.WriteLine("SlideshowFolder must be a complete path");
+                    Console.WriteLine("ImageFilePath can be an absolute or relative path");
+                    Console.WriteLine("SlideshowFolder must be an absolute path");
+                    Console.WriteLine("Use keyword \"None\" to unset wallpaper");
+                    Console.WriteLine("Use keyword \"Undo\" to revert to previous wallpaper");
                     Console.WriteLine("If MonitorIndex is omitted, wallpaper will be set for all monitors");
                     Console.WriteLine("If ImageFilePath is omitted, MonitorIndex wallpaper path will be returned");
                     Console.WriteLine("Position can be one of: Center Tile Stretch Fit Fill Span");
@@ -53,12 +55,14 @@ namespace WallP
                     CustomMessageBox.Show("\nSet wallpaper for one or more monitors" +
                       "\n\nFull functionality requires Windows 8 or higher" +
                       "\n\nWindows 7 limited to setting wallpaper for all monitors" +
-                      "\n\nUsage: WallP.exe [MonitorIndex] [ImageFilePath] [Position] [BackgroundColor] [/c]" +
+                      "\n\nUsage: WallP.exe [MonitorIndex] [ImageFilePath|SlideshowFolder|None|Undo] [Position] [BackgroundColor] [/c]" +
                       "\n\nParameters can be specified in any order" +
                       "\n\nMonitorIndex is a zero-based integer" +
-                      "\n\nImageFilePath can be an absolute or relative path, or None to unset wallpaper" +
-                      "\n\nSlideshowFolder must be a complete path" +
-                      "\n\nIf MonitorIndex is omitted, wallpaper will be set for all monitors, or None to unset wallpaper" +
+                      "\n\nImageFilePath can be an absolute or relative path" +
+                      "\n\nSlideshowFolder must be an absolute path" +
+                      "\n\nUse keyword \"None\" to unset wallpaper" +
+                      "\n\nUse keyword \"Undo\" to revert to previous wallpaper" +
+                      "\n\nIf MonitorIndex is omitted, wallpaper will be set for all monitors" +
                       "\n\nIf ImageFilePath is omitted, MonitorIndex wallpaper path will be returned" +
                       "\n\nPosition can be one of: Center Tile Stretch Fit Fill Span" +
                       "\n\nIf Position is omitted, position is unchanged for Center Stretch Fit Fill" +
