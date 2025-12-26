@@ -1,6 +1,6 @@
 # WallP
 
-[![image](https://github.com/LesFerch/WinSetView/assets/79026235/0188480f-ca53-45d5-b9ff-daafff32869e)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.4.0/WallP.zip)
+[![image](https://github.com/LesFerch/WinSetView/assets/79026235/0188480f-ca53-45d5-b9ff-daafff32869e)Download the zip file](https://github.com/LesFerch/WallP/releases/download/1.4.1/WallP.zip)
 
 ## Windows command line wallpaper changer for multiple monitors
 
@@ -82,6 +82,7 @@ Get average color of wallpaper for monitor 0:\
 \
 \
 [![image](https://github.com/LesFerch/WinSetView/assets/79026235/63b7acbc-36ef-4578-b96a-d0b7ea0cba3a)](https://github.com/LesFerch/WallP)
+
 
 
 
