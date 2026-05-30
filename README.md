@@ -72,7 +72,7 @@ Set all monitors to use wallpaper position "Fill".\
 
 **Example 5:**\
 Set background color for all monitors to "Cool Blue"\
-`WallP 45,125,154`
+`WallP 45,125,154`\
 `WallP None`
 
 **Example 6:**\
